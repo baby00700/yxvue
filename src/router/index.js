@@ -11,34 +11,56 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
+  // base: '/dist/',
   routes: [
     {
-      path: '/',
-      component: root0
+      path: '/dist',
+      component: root0,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
-      path: '/xsbm',
-      component: xsbm
+      path: '/dist/xsbm',
+      component: xsbm,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
-      path: '/xfjn',
-      component: xfjn
+      path: '/dist/xfjn',
+      component: xfjn,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
-      path: '/ssfp',
-      component: ssfp
+      path: '/dist/ssfp',
+      component: ssfp,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
-      path: '/zxyp',
-      component: zxyp
+      path: '/dist/zxyp',
+      component: zxyp,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
-      path: '/dxdj',
-      component: dxdj
+      path: '/dist/dxdj',
+      component: dxdj,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
-      path: '/sssm',
-      component: sssm
+      path: '/dist/sssm',
+      component: sssm,
+      meta: {
+        requiresAuth: true
+      }
     }
 
   ]

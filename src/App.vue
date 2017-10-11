@@ -53,16 +53,16 @@ export default {
     }
   },
   created: function () {
+    this.$router.push('/dist/')
     var LiuChengJiHeurl = 'https://www.easy-mock.com/mock/59a92b9fe0dc66334198ddf9/example/urlqwerty'
     if (localStorage.LiuChengIDJiHe !== undefined) {
-      console.log('数据不为空，无需获取')
-      console.log(localStorage.LiuChengIDJiHe.split(','))
+      console.log('已有流程列表数据，无需重新获取')
       this.LiuChengIDJiHe = localStorage.LiuChengIDJiHe.split(',')
       this.LiuChengNAMEJiHe = localStorage.LiuChengNAMEJiHe.split(',')
       var DangQianLiuChengurl = 'https://www.easy-mock.com/mock/59a92b9fe0dc66334198ddf9/example/liucheng'
       this.getDangQianLiuCheng(DangQianLiuChengurl)
     } else {
-      alert('数据为空，需要获取')
+      console.log('数据为空，需要获取')
       this.getLiuChengJiHe(LiuChengJiHeurl)
     }
 
@@ -70,7 +70,7 @@ export default {
       var grxxurl = 'http://www.easy-mock.com/mock/59a92b9fe0dc66334198ddf9/example/getgrxx'
       this.getgrxx(grxxurl)
     } else {
-      console.log('已有信息，无需重新获取')
+      console.log('已有学生信息，无需重新获取')
       var stuinfofromlocal = localStorage.getItem('studentinfo')
       this.$store.commit('addstudentinfo', stuinfofromlocal)
     }
@@ -122,17 +122,14 @@ export default {
       this.DangQianURL = this.$route.path
       this.DangQianURL = this.DangQianURL.substr(1)
       if (this.DangQianURL !== this.DangQianLiuChengID) {
-        console.info('不是这个流程')
+        console.info('不是这个流程,将进行push----》')
         this.$router.push(this.DangQianLiuChengID)
+        console.log('》----已经跳转')
       } else {
         console.info('是这个流程')
       }
     },
     gotoNext: function () {
-      // var stuinfofromvuex = this.$store.state.studentinfo
-      // console.log(stuinfofromvuex)
-      // stuinfofromvuex = JSON.parse(stuinfofromvuex)
-      // console.log(stuinfofromvuex)
       if (this.DangQianLiuChengXH >= this.LiuChengIDJiHe.length - 1) {
         this.DangQianLiuChengXH = this.LiuChengIDJiHe.length - 1
       } else {
@@ -185,11 +182,9 @@ export default {
 }
 </script>
 <style >
-  @import '/static/css/animate.css';
+  @import '../static/css/animate.css';
 </style>
-<style >
-  @import '/static/css/yingxin.css';
-</style>
+
 <style>
 *{
   margin:0px;
