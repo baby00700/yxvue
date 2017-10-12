@@ -1,12 +1,11 @@
 <template>
   <div id="app">
+    <loading/>
     <div class="header">
       <div class="liucheng-biaoti">
 					<div class="liucheng-tubiao"></div>
 					<div class="liucheng-wenzi">自助报到流程</div>
 			</div>
-
-
       <div class="hengxiang">
 					<div class="con">
 						<div class="main">
@@ -36,6 +35,7 @@
 <script>
 import vue from 'vue'
 import resource from 'vue-resource'
+import loading from './components/loading'
 vue.use(resource)
 export default {
   name: 'app',
@@ -51,6 +51,9 @@ export default {
       activeClass: 'activeClass',
       vmLiuchengXH: ''
     }
+  },
+  components: {
+    loading
   },
   created: function () {
     this.$router.push('/dist/')

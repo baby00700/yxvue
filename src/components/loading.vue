@@ -18,8 +18,11 @@ export default {
 <style scoped>
   .spinner {
     margin: 100px auto;
-    width: 50px;
-    height: 60px;
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
     text-align: center;
     font-size: 10px;
   }
