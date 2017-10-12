@@ -4,7 +4,7 @@
 <script>
 export default {
   data: function () {
-    return {rootmsg: 'ROOT'}
+    return {rootmsg: 'loading...'}
   }
 }
 </script>
