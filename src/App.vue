@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <loading v-if="loadIFshow"/>
+    <transition  name="custom-classes-transition" enter-to-class="animated flip">
+      <loading v-if="loadIFshow"/>
+    </transition>
     <div class="header">
       <div class="liucheng-biaoti">
 					<div class="liucheng-tubiao"></div>
@@ -23,7 +25,7 @@
     </div>
     <div class="router-view content middle">
        <transition  name="custom-classes-transition" enter-to-class="animated flip">
-          <router-view></router-view>
+          <router-view @letrefresh="refreshfromvuex"></router-view>
        </transition>
     </div>
     <div class="footer">
@@ -136,6 +138,7 @@ export default {
       }
     },
     gotoNext: function () {
+      this.isshow = false
       if (this.DangQianLiuChengXH >= this.LiuChengIDJiHe.length - 1) {
         this.DangQianLiuChengXH = this.LiuChengIDJiHe.length - 1
       } else {
@@ -144,6 +147,8 @@ export default {
         this.autoScrollLeft(this.vmLiuchengXH)
       }
       this.$router.push(this.LiuChengIDJiHe[this.DangQianLiuChengXH])
+      this.loadIFshow = true
+      this.$store.commit('changeload', true)
     },
     BackToLiucheng: function (index) {
       // console.log('index' + index)
@@ -185,6 +190,11 @@ export default {
       }).catch(function (res) {
         alert(res)
       })
+    },
+    refreshfromvuex: function () {
+      this.loadIFshow = this.$store.state.loadIFshow
+      this.isshow = true
+      console.log(this.loadIFshow)
     }
   }
 }
