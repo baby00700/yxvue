@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <loading/>
+    <loading v-if="loadIFshow"/>
     <div class="header">
       <div class="liucheng-biaoti">
 					<div class="liucheng-tubiao"></div>
@@ -49,7 +49,8 @@ export default {
       DangQianLiuChengXH: '',
       isshow: true,
       activeClass: 'activeClass',
-      vmLiuchengXH: ''
+      vmLiuchengXH: '',
+      loadIFshow: true
     }
   },
   components: {
@@ -57,6 +58,7 @@ export default {
   },
   created: function () {
     this.$router.push('/dist/')
+    this.loadIFshow = this.$store.state.loadIFshow
     var LiuChengJiHeurl = 'https://www.easy-mock.com/mock/59a92b9fe0dc66334198ddf9/example/urlqwerty'
     if (localStorage.LiuChengIDJiHe !== undefined) {
       console.log('已有流程列表数据，无需重新获取')
@@ -128,6 +130,7 @@ export default {
         console.info('不是这个流程,将进行push----》')
         this.$router.push(this.DangQianLiuChengID)
         console.log('》----已经跳转')
+        this.loadIFshow = false
       } else {
         console.info('是这个流程')
       }
@@ -172,8 +175,10 @@ export default {
           thisdata = JSON.stringify(thisdata)
           localStorage.setItem('studentinfo', thisdata)
           this.$store.commit('addstudentinfo', thisdata)
+          this.$store.commit('changeload', false)
         } else {
           alert('data is kong')
+          this.loadIFshow = false
         }
       }, function (data) {
         alert(data)
@@ -201,6 +206,20 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+
+.mohu{    /*全剧模糊*/
+
+  position:fixed;
+  width:120%;
+  height:120%;
+  top:-50px;
+  left:-50px;
+  background-color:rgba(250,250,250,0.4);
+  z-index:9998;
+  -webkit-filter: blur(10px); /* Chrome, Opera */
+  filter: blur(10px);
+}
+
 a{
   text-decoration:none;
 }

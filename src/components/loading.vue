@@ -1,10 +1,12 @@
 <template>
-  <div class="spinner">
-    <div class="rect1"></div>
-    <div class="rect2"></div>
-    <div class="rect3"></div>
-    <div class="rect4"></div>
-    <div class="rect5"></div>
+  <div class="wrapload">
+    <div class="spinner">
+      <div class="rect1"></div>
+      <div class="rect2"></div>
+      <div class="rect3"></div>
+      <div class="rect4"></div>
+      <div class="rect5"></div>
+    </div>
   </div>
 </template>
 
@@ -16,19 +18,29 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .spinner {
-    margin: 100px auto;
+
+  .wrapload{
     position:fixed;
-    top:0px;
-    left:0px;
     width:100%;
     height:100%;
-    text-align: center;
-    font-size: 10px;
+    top:0px;
+    left:0px;
+    background-color:rgba(0,0,0,0.8);
+    z-index:9999;
+  }
+  .spinner {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
   }
 
   .spinner > div {
-    background-color: #67CF22;
+    background-color: #fff;
     height: 100%;
     width: 6px;
     display: inline-block;
