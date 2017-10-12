@@ -31,6 +31,7 @@
     </div>
     <div class="footer">
       <div class="but" v-if="isshow" @click="gotoNext">next</div>
+      <div class="gooutbut" v-if="gooutisshow" @click="gotoNext">next</div>
     </div>
   </div>
 </template>
@@ -53,7 +54,8 @@ export default {
       isshow: true,
       activeClass: 'activeClass',
       vmLiuchengXH: '',
-      loadIFshow: true
+      loadIFshow: true,
+      gooutisshow: false
     }
   },
   components: {
@@ -154,6 +156,7 @@ export default {
     BackToLiucheng: function (index) {
       // console.log('index' + index)
       // console.log('liucheng' + this.DangQianLiuChengXH)
+      // this.vmLiuchengXH = index
       if (index > this.DangQianLiuChengXH) {
         console.log('noway')
       } else if (index < this.DangQianLiuChengXH) {
@@ -194,7 +197,9 @@ export default {
     },
     refreshfromvuex: function () {
       this.loadIFshow = this.$store.state.loadIFshow
-      this.isshow = true
+      if (this.vmLiuchengXH === this.DangQianLiuChengXH) {
+        this.isshow = true
+      }
       console.log(this.loadIFshow)
     }
   }
