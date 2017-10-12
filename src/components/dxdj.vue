@@ -7,8 +7,7 @@ export default {
     return {msg: '到校登记'}
   },
   created: function () {
-    alert(this.$store.state.loadIFshow)
-    // this.$store.commit('changeload', false)
+    this.$store.commit('changeload', false)
     this.$emit('letrefresh')
   }
 }

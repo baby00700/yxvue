@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <transition  name="custom-classes-transition" enter-to-class="animated flip">
-      <loading v-if="loadIFshow"/>
-    </transition>
+    <!--<transition  name="custom-classes-transition" enter-to-class="animated flip">-->
+      <!--<loading v-if="loadIFshow"/>-->
+    <!--</transition>-->
+    <loading v-if="loadIFshow"/>
     <div class="header">
       <div class="liucheng-biaoti">
 					<div class="liucheng-tubiao"></div>
