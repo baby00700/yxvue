@@ -30,8 +30,8 @@
        </transition>
     </div>
     <div class="footer">
-      <div class="but" v-if="isshow" @click="gotoNext">next</div>
-      <div class="gooutbut" v-if="gooutisshow" @click="gotoNext">next</div>
+      <div class="but" v-if="isshow" @click="gotoNext">下一步</div>
+      <div class="gooutbut" v-if="gooutisshow" @click="gotoHome">返回主页</div>
     </div>
   </div>
 </template>
@@ -84,6 +84,7 @@ export default {
       var stuinfofromlocal = localStorage.getItem('studentinfo')
       this.$store.commit('addstudentinfo', stuinfofromlocal)
     }
+    this.refreshfromvuex()
   },
   methods: {
     getLiuChengJiHe: function (url) {
@@ -197,10 +198,15 @@ export default {
     },
     refreshfromvuex: function () {
       this.loadIFshow = this.$store.state.loadIFshow
-      if (this.vmLiuchengXH === this.DangQianLiuChengXH) {
+      if (this.vmLiuchengXH === this.DangQianLiuChengXH && this.vmLiuchengXH !== this.LiuChengIDJiHe.length - 1) {
         this.isshow = true
+      } else if (this.vmLiuchengXH === this.LiuChengIDJiHe.length - 1) {
+        this.gooutisshow = true
       }
       console.log(this.loadIFshow)
+    },
+    gotoHome: function () {
+      window.location.href = 'http://www.baidu.com'
     }
   }
 }
@@ -433,6 +439,21 @@ li {
 }
 
 
-
+.gooutbut{
+  width:80%;
+  margin:0 auto;
+  height: 40px;
+  margin-top:50px;
+  background-color:#1979CA;
+  border-radius:5px;
+  text-align:center;
+  color:#fff;
+  font-size:18px;
+  line-height:40px;
+  -webkit-box-shadow:3px 2px 15px 1px rgba(0,0,0,0.4);
+}
+.gooutbut:active{
+  -webkit-box-shadow:1px 1px 3px 1px rgba(0,0,0,0.2);
+}
 
 </style>
