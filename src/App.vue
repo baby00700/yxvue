@@ -198,11 +198,24 @@ export default {
     },
     refreshfromvuex: function () {
       this.loadIFshow = this.$store.state.loadIFshow
-      if (this.vmLiuchengXH === this.DangQianLiuChengXH && this.vmLiuchengXH !== this.LiuChengIDJiHe.length - 1) {
-        this.isshow = true
-      } else if (this.vmLiuchengXH === this.LiuChengIDJiHe.length - 1) {
+      if (this.vmLiuchengXH !== this.LiuChengNAMEJiHe.length - 1) {
+        if (this.vmLiuchengXH === this.DangQianLiuChengXH) {
+          this.isshow = true
+          this.gooutisshow = false
+        } else {
+          this.gooutisshow = true
+          this.isshow = false
+        }
+      } else {
+        this.isshow = false
         this.gooutisshow = true
       }
+//      if (this.vmLiuchengXH === this.DangQianLiuChengXH && this.vmLiuchengXH !== this.LiuChengIDJiHe.length - 1) {
+//        this.isshow = true
+//        this.gooutisshow = false
+//      } else if (this.vmLiuchengXH === this.LiuChengIDJiHe.length - 1 && this.vmLiuchengXH === this.DangQianLiuChengXH) {
+//        this.gooutisshow = true
+//      }
       console.log(this.loadIFshow)
     },
     gotoHome: function () {
@@ -390,11 +403,8 @@ li {
 
 .middle{
   width:100%;
-  border:1px solid #eee;
-  font-size:30px;
-  line-height:30px;
-  margin-top:30px;
-  background-color:rgba(255,0,0,0.3)
+  background-color:rgb(240,240,240);
+  position:relative;
 }
 
 .footer{
